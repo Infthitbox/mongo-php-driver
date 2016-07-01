@@ -1180,7 +1180,7 @@ mongoc_stream_t* phongo_stream_initiator(const mongoc_uri_t *uri, const mongoc_h
 
 	MONGOC_DEBUG("Connecting to '%s'", uniqid);
 	zend_replace_error_handling(EH_SUPPRESS, NULL, &error_handling TSRMLS_CC);
-	stream = php_stream_xport_create(dsn, dsn_len, 0, STREAM_XPORT_CLIENT | STREAM_XPORT_CONNECT, uniqid, timeoutp, (php_stream_context *)user_data, &errmsg, &errcode);
+	stream = php_stream_xport_create(dsn, dsn_len, 0, STREAM_XPORT_CLIENT | STREAM_XPORT_CONNECT, false, timeoutp, (php_stream_context *)user_data, &errmsg, &errcode);
 	zend_restore_error_handling(&error_handling TSRMLS_CC);
 
 	if (!stream) {
